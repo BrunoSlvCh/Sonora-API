@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./docs/logo.png" alt="Sonora" width="220" />
+<img src="./docs/logo-sonora.png" alt="Sonora" width="220" />
 
 # Sonora
 
