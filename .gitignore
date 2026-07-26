@@ -1,0 +1,15 @@
+target/
+
+.idea/
+
+.vscode/
+
+*.iml
+
+uploads/
+
+application.properties
+
+.env
+
+.DS_Store

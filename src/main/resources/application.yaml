@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: spring-boot-essentials
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring_usuarios?createDatabaseIfNotExist=true
+    username: root
+    password: ""
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+server:
+  port: 8082

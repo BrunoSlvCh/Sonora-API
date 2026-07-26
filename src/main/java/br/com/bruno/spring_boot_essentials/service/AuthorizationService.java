@@ -1,0 +1,31 @@
+package br.com.bruno.spring_boot_essentials.service;
+
+import br.com.bruno.spring_boot_essentials.repository.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+@Service
+public class AuthorizationService implements UserDetailsService {
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        UserDetails usuario = usuarioRepository.findByEmail(username);
+
+        // UserDetailsService nunca pode devolver null (contrato do Spring Security);
+        // precisa lançar UsernameNotFoundException. O DaoAuthenticationProvider
+        // converte isso automaticamente em BadCredentialsException por baixo dos
+        // panos, então o front recebe "Credenciais incorretas." (401), sem revelar
+        // se o e-mail existe ou não.
+        if (usuario == null) {
+            throw new UsernameNotFoundException("Usuário não encontrado.");
+        }
+
+        return usuario;
+    }
+}
