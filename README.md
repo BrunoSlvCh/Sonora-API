@@ -114,7 +114,7 @@ O projeto é dividido em duas partes independentes:
 
 ## ⬆️ Upload de Músicas
 
-![Upload](docs/upload-musica.png)
+![Upload](docs/upload-musicas.png)
 
 ---
 
