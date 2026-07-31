@@ -16,12 +16,7 @@ public class AuthorizationService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserDetails usuario = usuarioRepository.findByEmail(username);
-
-        // UserDetailsService nunca pode devolver null (contrato do Spring Security);
-        // precisa lançar UsernameNotFoundException. O DaoAuthenticationProvider
-        // converte isso automaticamente em BadCredentialsException por baixo dos
-        // panos, então o front recebe "Credenciais incorretas." (401), sem revelar
-        // se o e-mail existe ou não.
+        
         if (usuario == null) {
             throw new UsernameNotFoundException("Usuário não encontrado.");
         }
